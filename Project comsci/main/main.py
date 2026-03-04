@@ -18,7 +18,7 @@ big_font = pygame.font.SysFont(None,40)
 #pygame.display.set_icon(icon)
 
 #รายชื่อประเทศทั้งหมด (Country Data) เก็บเป็น(ละติจูด,ลองติจูด)
-data_path = Path(__file__).resolve().parent / "data" / "countries.csv"
+data_path = Path(__file__).resolve().parent.parent / "data" / "countries.csv"
 df = pd.read_csv(data_path)
 
 #random country
@@ -38,14 +38,14 @@ message = "Guess country"
 running = True
 while running:
     #กำหนดสี
-    screen.fill()
+    screen.fill((20, 20, 20))
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
 
         if event.type == pygame.KEYDOWN:
-            if  event.key == pygame.K_RETURN:
+            if event.key == pygame.K_RETURN:
                 guess = input_text.lower()#user input
                 if guess in df["name"].str.lower().values:
                     count += 1
@@ -62,16 +62,17 @@ while running:
                 else:
                     message = ""
                 input_text = ""
-            elif event.key == null:
-                hint_tyep = random.choice([])
-                lat, lon = random_country[["latitude", "longitude"]]
-        elif event.key == pygame.K_BACKSPACE:
-            input_text = input_text[:-1]
-        else:
-            input_text += event.unicode
+            elif event.key == pygame.K_BACKSPACE:
+                input_text = input_text[:-1]
+            else:
+                input_text += event.unicode
     #ค้นหาชื่อประเทศตามตัวอักษร
     suggestions = [c for c in df["name"].str.lower().values if c.startswith(input_text.lower())]
 
     #input 
-    input_surface = big_font.render("Whis country? :" + input_text,True,(255,255,255))
+    input_surface = big_font.render("this country? :" + input_text,True,(255,255,255))
     screen.blit(input_surface, (50,50))
+    pygame.display.flip()
+
+pygame.quit()
+sys.exit()
