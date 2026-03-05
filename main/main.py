@@ -25,6 +25,7 @@ df = pd.read_csv(data_path)
 
 #random country
 random_country = df.sample(1).iloc[0]
+print(f"Random Country: {random_country['name']} (Lat: {random_country['latitude']}, Lon: {random_country['longitude']})")
 
 #เก็บคำใบ้ของแต่ละประเทศ (โดยมีคำใบ้เกี่ยว ทวีปที่อยู่ ,ขึ้นต้นด้วยอะไร)
 country_hint = {
@@ -66,7 +67,7 @@ while running:
                 if guess is not None:
                     count += 1
                     if guess["name"].lower() == random_country["name"].lower():
-                        message = f"Correct! {random_country['name']}"
+                        message = f"Correct! {random_country["name"]}"
                     else:
                         lat1, lon1 = guess["latitude"], guess["longitude"]
                         lat2, lon2 = random_country["latitude"], random_country["longitude"]
