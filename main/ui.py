@@ -70,20 +70,20 @@ def draw_game_ui(
 
     # message
     msg_surface = font.render(message, True, (255,255,255))
-    screen.blit(msg_surface,(50,20))
+    screen.blit(msg_surface,(50,40))
 
     # Input box
-    pygame.draw.rect(screen,(40,40,60),(40,50,300,50),border_radius=10)
+    pygame.draw.rect(screen,(40,40,60),(40,80,300,50),border_radius=10)
     text_surface = font.render(input_text,True,(255,255,255))
-    screen.blit(text_surface,(60,65))
+    screen.blit(text_surface,(60,95))
 
     label = font.render("Type country:",True,(200,200,200))
-    screen.blit(label,(50,35))
+    screen.blit(label,(50,60))
 
     # Suggestions panel
-    pygame.draw.rect(screen,(30,30,50),(40,120,300,220),border_radius=10)
+    pygame.draw.rect(screen,(30,30,50),(40,150,300,220),border_radius=10)
 
-    y_offset = 130
+    y_offset = 160
     for suggestion in suggestions[:6]:
         sug = font.render(suggestion,True,(200,200,100))
         screen.blit(sug,(60,y_offset))
@@ -93,7 +93,7 @@ def draw_game_ui(
     display_angle = _draw_compass(screen,current_bearing,display_angle)
 
     # Guess history panel
-    pygame.draw.rect(screen,(40,40,60),(900,120,350,400),border_radius=10)
+    pygame.draw.rect(screen,(40,40,60),(880,150,360,420),border_radius=10)
 
     history_title = big_font.render("History",True,(255,255,255))
     screen.blit(history_title,(1020,130))
@@ -118,6 +118,7 @@ def draw_game_ui(
     hint_button.update(screen)
 
     # Back button
+    pygame.draw.rect(SCREEN,(40,40,60),(1080,10,180,60),border_radius=12)
     back_button.changeColor(mouse_pos)
     back_button.update(screen)
 
@@ -236,9 +237,9 @@ def play():
 
     random_country = df.sample(1).iloc[0]
 
-    hint_button = button.Button(image=None,pos=(640,250),text_input="HINT",font=get_font(40),base_color=(255,255,255),hovering_color=(255,0,0))
+    hint_button = button.Button(image=None,pos=(640,220),text_input="HINT",font=get_font(40),base_color=(255,255,255),hovering_color=(255,0,0))
 
-    back_button = button.Button(image=None,pos=(80,50),text_input="BACK",font=get_font(30),base_color=(255,255,255),hovering_color=(255,0,0))
+    back_button = button.Button(image=None,pos=(1200,40),text_input="BACK",font=get_font(35),base_color=(255,255,255),hovering_color=(255,0,0))
 
     running = True
     while running:
