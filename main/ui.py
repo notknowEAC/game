@@ -1,7 +1,6 @@
 import math
 import pygame
 import sys
-import os
 from pathlib import Path
 import pandas as pd
 import button
@@ -47,19 +46,80 @@ max_hints = 3
 random_country = df.sample(1).iloc[0]
 
 
-def draw_game_ui(screen, input_text, suggestions, guess_history,hint_text, current_bearing, display_angle,hint_button, mouse_pos, message):
+def draw_game_ui(
+    screen,
+    font,
+    big_font,
+    input_text,
+    suggestions,
+    guess_history,
+    hint_text,
+    current_bearing,
+    display_angle,
+    hint_button,
+    back_button,
+    mouse_pos,
+    message,
+):
+
     screen.blit(bg_play,(0,0))
 
-    msg_surface = font.render(message,True,(255,255,255))
+    # Title
+    title = big_font.render("Guess The Country", True, (255,255,255))
+    screen.blit(title,(480,10))
+
+    # message
+    msg_surface = font.render(message, True, (255,255,255))
     screen.blit(msg_surface,(50,20))
 
-    _draw_input_area(screen,input_text,suggestions)
-    display_angle = _draw_compass(screen,current_bearing,display_angle)
-    _draw_guess_history(screen,guess_history)
-    _draw_hint_text(screen,hint_text)
+    # Input box
+    pygame.draw.rect(screen,(40,40,60),(40,50,300,50),border_radius=10)
+    text_surface = font.render(input_text,True,(255,255,255))
+    screen.blit(text_surface,(60,65))
 
+    label = font.render("Type country:",True,(200,200,200))
+    screen.blit(label,(50,35))
+
+    # Suggestions panel
+    pygame.draw.rect(screen,(30,30,50),(40,120,300,220),border_radius=10)
+
+    y_offset = 130
+    for suggestion in suggestions[:6]:
+        sug = font.render(suggestion,True,(200,200,100))
+        screen.blit(sug,(60,y_offset))
+        y_offset += 30
+
+    # Compass
+    display_angle = _draw_compass(screen,current_bearing,display_angle)
+
+    # Guess history panel
+    pygame.draw.rect(screen,(40,40,60),(900,120,350,400),border_radius=10)
+
+    history_title = big_font.render("History",True,(255,255,255))
+    screen.blit(history_title,(1020,130))
+
+    y_offset = 180
+    for guess,distance,direction in guess_history[-10:]:
+        line = f"{guess} | {distance} km | {direction}"
+        line_surface = font.render(line,True,(255,255,255))
+        screen.blit(line_surface,(920,y_offset))
+        y_offset += 40
+
+    # Hint text
+    if hint_text != "":
+        pygame.draw.rect(screen,(30,30,30),(420,520,450,70),border_radius=12)
+        pygame.draw.rect(screen,(255,255,255),(420,520,450,70),2,border_radius=12)
+
+        hint_surface = font.render("Hint: " + hint_text, True, (255,255,0))
+        screen.blit(hint_surface,(440,545))
+
+    # Hint button
     hint_button.changeColor(mouse_pos)
     hint_button.update(screen)
+
+    # Back button
+    back_button.changeColor(mouse_pos)
+    back_button.update(screen)
 
     return display_angle
 
@@ -80,7 +140,7 @@ def _draw_input_area(screen,input_text,suggestions):
 
 def _draw_compass(screen,current_bearing,display_angle):
 
-    center = (450,320)
+    center = (640, 360)
     radius = 110
 
     pygame.draw.circle(screen,(40,50,70),center,radius)
@@ -151,7 +211,7 @@ def _draw_guess_history(screen,guess_history):
 
         screen.blit(surface,(620,y))
 
-        y += 30
+        y += 40
 
 
 def _draw_hint_text(screen,hint_text):
@@ -177,13 +237,18 @@ def play():
     random_country = df.sample(1).iloc[0]
 
     hint_button = button.Button(image=None,pos=(640,250),text_input="HINT",font=get_font(40),base_color=(255,255,255),hovering_color=(255,0,0))
+
+    back_button = button.Button(image=None,pos=(80,50),text_input="BACK",font=get_font(30),base_color=(255,255,255),hovering_color=(255,0,0))
+
     running = True
     while running:
         mouse_pos = pygame.mouse.get_pos()
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
+
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RETURN:
                     count += 1
@@ -210,9 +275,12 @@ def play():
                             current_bearing = bearing
                     else:
                         message = "Country not found"
+
                     input_text = ""
+
                 elif event.key == pygame.K_BACKSPACE:#backspace to delete
                     input_text = input_text[:-1]
+
                 else:
                     input_text += event.unicode
 
@@ -236,11 +304,16 @@ def play():
                     else:
                         hint_text = "No more hints"
 
+                if back_button.checkForInput(mouse_pos):
+                    return
+
         #ค้นหาชื่อประเทศตามตัวอักษร
         suggestions = [c for c in df["country"]if c.lower().startswith(input_text.lower())]
 
         display_angle = draw_game_ui(
             SCREEN,
+            font,
+            big_font,
             input_text,
             suggestions,
             guess_history,
@@ -248,12 +321,13 @@ def play():
             current_bearing,
             display_angle,
             hint_button,
+            back_button,
             mouse_pos,
             message
         )
 
-        count_surface = font.render(f"Guesses : {count}",True,(255,255,255))
-        SCREEN.blit(count_surface,(50,120))
+        count_surface = big_font.render(f"Guesses : {count}",True,(255,255,255))
+        SCREEN.blit(count_surface,(560,70))
 
         pygame.display.flip()
         clock.tick(60)
@@ -265,6 +339,7 @@ def options():
         SCREEN.fill((255,255,255))
         text = big_font.render("OPTIONS",True,(0,0,0))
         SCREEN.blit(text,(540,200))
+
         back = button.Button(
             image=None,
             pos=(640,460),
@@ -273,25 +348,34 @@ def options():
             base_color="Black",
             hovering_color="Green"
         )
+
         mouse_pos = pygame.mouse.get_pos()
+
         back.changeColor(mouse_pos)
         back.update(SCREEN)
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
+
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if back.checkForInput(mouse_pos):
                     return
+
         pygame.display.update()
+
 
 def main_menu():
 
     while True:
         SCREEN.blit(bg_menu,(0,0))
+
         mouse_pos = pygame.mouse.get_pos()
+
         title = get_font(90).render("GUESS THE COUNTRY",True,"#b68f40")
         SCREEN.blit(title,title.get_rect(center=(640,100)))
+
         play_button = button.Button(
             image=None,
             pos=(640,250),
@@ -300,6 +384,7 @@ def main_menu():
             base_color="#d7fcd4",
             hovering_color="White"
         )
+
         options_button = button.Button(
             image=None,
             pos=(640,400),
@@ -308,6 +393,7 @@ def main_menu():
             base_color="#d7fcd4",
             hovering_color="White"
         )
+
         quit_button = button.Button(
             image=None,
             pos=(640,550),
@@ -322,18 +408,24 @@ def main_menu():
             b.update(SCREEN)
 
         for event in pygame.event.get():
+
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
+
             if event.type == pygame.MOUSEBUTTONDOWN:
+
                 if play_button.checkForInput(mouse_pos):
                     play()
+
                 if options_button.checkForInput(mouse_pos):
                     options()
+
                 if quit_button.checkForInput(mouse_pos):
                     pygame.quit()
                     sys.exit()
 
         pygame.display.update()
+
 
 main_menu()
