@@ -352,11 +352,11 @@ def play():
         clock.tick(60)
 
 
-def options():
+def rules():
 
     while True:
         SCREEN.fill((255,255,255))
-        text = big_font.render("OPTIONS",True,(0,0,0))
+        text = big_font.render("rules",True,(0,0,0))
         SCREEN.blit(text,(540,200))
 
         back = button.Button(
@@ -410,10 +410,10 @@ def main_menu():
             hovering_color="White"
         )
 
-        options_button = button.Button(
+        rules_button = button.Button(
             image=None,
             pos=(640,400),
-            text_input="OPTIONS",
+            text_input="rules",
             font=get_font(70),
             base_color="#d7fcd4",
             hovering_color="White"
@@ -428,7 +428,7 @@ def main_menu():
             hovering_color="White"
         )
 
-        for b in [play_button,options_button,quit_button]:
+        for b in [play_button,rules_button,quit_button]:
             b.changeColor(mouse_pos)
             b.update(SCREEN)
 
@@ -443,8 +443,8 @@ def main_menu():
                 if play_button.checkForInput(mouse_pos):
                     play()
 
-                if options_button.checkForInput(mouse_pos):
-                    options()
+                if rules_button.checkForInput(mouse_pos):
+                    rules()
 
                 if quit_button.checkForInput(mouse_pos):
                     pygame.quit()
