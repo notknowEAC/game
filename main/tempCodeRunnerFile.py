@@ -1,2 +1,2 @@
-t_count == 1:
+t_count == 1
                     #     hint

@@ -13,9 +13,11 @@ def draw_game_ui(
     display_angle,
     hint_button,
     mouse_pos,
+    message
 ):
     screen.fill((20, 25, 40))
-
+    msg_surface = font.render(message, True, (255,255,255))
+    screen.blit(msg_surface,(50,20))
     _draw_input_area(screen, font, big_font, input_text, suggestions)
     display_angle = _draw_compass(screen, font, current_bearing, display_angle)
     _draw_guess_history(screen, font, big_font, guess_history)
@@ -29,7 +31,8 @@ def draw_game_ui(
 def _draw_input_area(screen, font, big_font, input_text, suggestions):
     input_surface = big_font.render("this country? :" + input_text, True, (255, 255, 255))
     screen.blit(input_surface, (50, 50))
-
+    
+    pygame.draw.rect(screen,(40,40,60),(40,95,260,170))
     y_offset = 100
     for suggestion in suggestions[:5]:
         text_surface = font.render(suggestion, True, (200, 200, 100))
@@ -45,7 +48,7 @@ def _draw_compass(screen, font, current_bearing, display_angle):
     pygame.draw.circle(screen, (200, 200, 200), compass_center, compass_radius, 3)
 
     for degree in range(0, 360, 10):
-        rad = math.radians(degree)
+        rad = math.radians(degree - 90) 
         x1 = compass_center[0] + math.cos(rad) * compass_radius
         y1 = compass_center[1] + math.sin(rad) * compass_radius
         length = 18 if degree % 30 == 0 else 8
@@ -53,9 +56,9 @@ def _draw_compass(screen, font, current_bearing, display_angle):
         y2 = compass_center[1] + math.sin(rad) * (compass_radius - length)
         pygame.draw.line(screen, (200, 200, 200), (x1, y1), (x2, y2), 2)
 
-    directions = [("S", 90), ("E", 0), ("N", 270), ("W", 180)]
+    directions = [("N", 0), ("E", 90), ("S", 180), ("W", 270)]
     for text, degree in directions:
-        rad = math.radians(degree)
+        rad = math.radians(degree - 90)
         x = compass_center[0] + math.cos(rad) * (compass_radius - 30)
         y = compass_center[1] + math.sin(rad) * (compass_radius - 30)
         label = font.render(text, True, (255, 255, 255))
@@ -76,7 +79,7 @@ def _draw_compass(screen, font, current_bearing, display_angle):
         pygame.draw.line(screen, (255, 255, 255), compass_center, (bx, by), 4)
 
         pygame.draw.circle(screen, (255, 255, 255), compass_center, 6)
-
+        
     return display_angle
 
 
@@ -95,5 +98,5 @@ def _draw_guess_history(screen, font, big_font, guess_history):
 
 def _draw_hint_text(screen, font, hint_text):
     if hint_text != "":
-        hint_surface = font.render(hint_text, True, (255, 255, 0))
+        hint_surface = font.render("Hint: " + hint_text, True, (255,255,0))
         screen.blit(hint_surface, (600, 200))

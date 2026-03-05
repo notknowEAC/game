@@ -1,196 +1,197 @@
-ISO2,latitude,longitude,name
-AD,42.546245,1.601554,Andorra
-AE,23.424076,53.847818,United Arab Emirates
-AF,33.93911,67.709953,Afghanistan
-AG,17.060816,-61.796428,Antigua and Barbuda
-AL,41.153332,20.168331,Albania
-AM,40.069099,45.038189,Armenia
-AO,-11.202692,17.873887,Angola
-AR,-38.416097,-63.616672,Argentina
-AT,47.516231,14.550072,Austria
-AU,-25.274398,133.775136,Australia
-AZ,40.143105,47.576927,Azerbaijan
-BA,43.915886,17.679076,Bosnia and Herzegovina
-BB,13.193887,-59.543198,Barbados
-BD,23.684994,90.356331,Bangladesh
-BE,50.503887,4.469936,Belgium
-BF,12.238333,-1.561593,Burkina Faso
-BG,42.733883,25.48583,Bulgaria
-BH,25.930414,50.637772,Bahrain
-BI,-3.373056,29.918886,Burundi
-BJ,9.30769,2.315834,Benin
-BN,4.535277,114.727669,Brunei
-BO,-16.290154,-63.588653,Bolivia
-BR,-14.235004,-51.92528,Brazil
-BS,25.03428,-77.39628,Bahamas
-BT,27.514162,90.433601,Bhutan
-BW,-22.328474,24.684866,Botswana
-BY,53.709807,27.953389,Belarus
-BZ,17.189877,-88.49765,Belize
-CA,56.130366,-106.346771,Canada
-CD,-4.038333,21.758664,Congo [DRC]
-CF,6.611111,20.939444,Central African Republic
-CG,-0.228021,15.827659,Congo [Republic]
-CH,46.818188,8.227512,Switzerland
-CI,7.539989,-5.54708,Côte d'Ivoire
-CL,-35.675147,-71.542969,Chile
-CM,7.369722,12.354722,Cameroon
-CN,35.86166,104.195397,China
-CO,4.570868,-74.297333,Colombia
-CR,9.748917,-83.753428,Costa Rica
-CU,21.521757,-77.781167,Cuba
-CV,16.002082,-24.013197,Cape Verde
-CY,35.126413,33.429859,Cyprus
-CZ,49.817492,15.472962,Czech Republic
-DE,51.165691,10.451526,Germany
-DJ,11.825138,42.590275,Djibouti
-DK,56.26392,9.501785,Denmark
-DM,15.414999,-61.370976,Dominica
-DO,18.735693,-70.162651,Dominican Republic
-DZ,28.033886,1.659626,Algeria
-EC,-1.831239,-78.183406,Ecuador
-EE,58.595272,25.013607,Estonia
-EG,26.820553,30.802498,Egypt
-ER,15.179384,39.782334,Eritrea
-ES,40.463667,-3.74922,Spain
-ET,9.145,40.489673,Ethiopia
-FI,61.92411,25.748151,Finland
-FJ,-16.578193,179.414413,Fiji
-FM,7.425554,150.550812,Micronesia
-FR,46.227638,2.213749,France
-GA,-0.803689,11.609444,Gabon
-GB,55.378051,-3.435973,United Kingdom
-GD,12.262776,-61.604171,Grenada
-GE,42.315407,43.356892,Georgia
-GH,7.946527,-1.023194,Ghana
-GM,13.443182,-15.310139,Gambia
-GN,9.945587,-9.696645,Guinea
-GQ,1.650801,10.267895,Equatorial Guinea
-GR,39.074208,21.824312,Greece
-GT,15.783471,-90.230759,Guatemala
-GW,11.803749,-15.180413,Guinea-Bissau
-GY,4.860416,-58.93018,Guyana
-HN,15.199999,-86.241905,Honduras
-HR,45.1,15.2,Croatia
-HT,18.971187,-72.285215,Haiti
-HU,47.162494,19.503304,Hungary
-ID,-0.789275,113.921327,Indonesia
-IE,53.41291,-8.24389,Ireland
-IL,31.046051,34.851612,Israel
-IN,20.593684,78.96288,India
-IQ,33.223191,43.679291,Iraq
-IR,32.427908,53.688046,Iran
-IS,64.963051,-19.020835,Iceland
-IT,41.87194,12.56738,Italy
-JM,18.109581,-77.297508,Jamaica
-JO,30.585164,36.238414,Jordan
-JP,36.204824,138.252924,Japan
-KE,-0.023559,37.906193,Kenya
-KG,41.20438,74.766098,Kyrgyzstan
-KH,12.565679,104.990963,Cambodia
-KI,-3.370417,-168.734039,Kiribati
-KM,-11.875001,43.872219,Comoros
-KN,17.357822,-62.782998,Saint Kitts and Nevis
-KP,40.339852,127.510093,North Korea
-KR,35.907757,127.766922,South Korea
-KW,29.31166,47.481766,Kuwait
-KZ,48.019573,66.923684,Kazakhstan
-LA,19.85627,102.495496,Laos
-LB,33.854721,35.862285,Lebanon
-LC,13.909444,-60.978893,Saint Lucia
-LI,47.166,9.555373,Liechtenstein
-LK,7.873054,80.771797,Sri Lanka
-LR,6.428055,-9.429499,Liberia
-LS,-29.609988,28.233608,Lesotho
-LT,55.169438,23.881275,Lithuania
-LU,49.815273,6.129583,Luxembourg
-LV,56.879635,24.603189,Latvia
-LY,26.3351,17.228331,Libya
-MA,31.791702,-7.09262,Morocco
-MC,43.750298,7.412841,Monaco
-MD,47.411631,28.369885,Moldova
-ME,42.708678,19.37439,Montenegro
-MG,-18.766947,46.869107,Madagascar
-MH,7.131474,171.184478,Marshall Islands
-MK,41.608635,21.745275,Macedonia [FYROM]
-ML,17.570692,-3.996166,Mali
-MM,21.913965,95.956223,Myanmar [Burma]
-MN,46.862496,103.846656,Mongolia
-MR,21.00789,-10.940835,Mauritania
-MT,35.937496,14.375416,Malta
-MU,-20.348404,57.552152,Mauritius
-MV,3.202778,73.22068,Maldives
-MW,-13.254308,34.301525,Malawi
-MX,23.634501,-102.552784,Mexico
-MY,4.210484,101.975766,Malaysia
-MZ,-18.665695,35.529562,Mozambique
-NA,-22.95764,18.49041,Namibia
-NE,17.607789,8.081666,Niger
-NG,9.081999,8.675277,Nigeria
-NI,12.865416,-85.207229,Nicaragua
-NL,52.132633,5.291266,Netherlands
-NO,60.472024,8.468946,Norway
-NP,28.394857,84.124008,Nepal
-NR,-0.522778,166.931503,Nauru
-NZ,-40.900557,174.885971,New Zealand
-OM,21.512583,55.923255,Oman
-PA,8.537981,-80.782127,Panama
-PE,-9.189967,-75.015152,Peru
-PG,-6.314993,143.95555,Papua New Guinea
-PH,12.879721,121.774017,Philippines
-PK,30.375321,69.345116,Pakistan
-PL,51.919438,19.145136,Poland
-PS,31.952162,35.233154,Palestinian Territories
-PT,39.399872,-8.224454,Portugal
-PW,7.51498,134.58252,Palau
-PY,-23.442503,-58.443832,Paraguay
-QA,25.354826,51.183884,Qatar
-RO,45.943161,24.96676,Romania
-RS,44.016521,21.005859,Serbia
-RU,61.52401,105.318756,Russia
-RW,-1.940278,29.873888,Rwanda
-SA,23.885942,45.079162,Saudi Arabia
-SB,-9.64571,160.156194,Solomon Islands
-SC,-4.679574,55.491977,Seychelles
-SD,12.862807,30.217636,Sudan
-SE,60.128161,18.643501,Sweden
-SG,1.352083,103.819836,Singapore
-SI,46.151241,14.995463,Slovenia
-SK,48.669026,19.699024,Slovakia
-SL,8.460555,-11.779889,Sierra Leone
-SM,43.94236,12.457777,San Marino
-SN,14.497401,-14.452362,Senegal
-SO,5.152149,46.199616,Somalia
-SR,3.919305,-56.027783,Suriname
-SS,7.869722,29.666667,South Sudan
-ST,0.18636,6.613081,São Tomé and Príncipe
-SV,13.794185,-88.89653,El Salvador
-SY,34.802075,38.996815,Syria
-SZ,-26.522503,31.465866,Swaziland
-TD,15.454166,18.732207,Chad
-TG,8.619543,0.824782,Togo
-TH,15.870032,100.992541,Thailand
-TJ,38.861034,71.276093,Tajikistan
-TL,-8.874217,125.727539,Timor-Leste
-TM,38.969719,59.556278,Turkmenistan
-TN,33.886917,9.537499,Tunisia
-TO,-21.178986,-175.198242,Tonga
-TR,38.963745,35.243322,Turkey
-TT,10.691803,-61.222503,Trinidad and Tobago
-TV,-7.109535,177.64933,Tuvalu
-TZ,-6.369028,34.888822,Tanzania
-UA,48.379433,31.16558,Ukraine
-UG,1.373333,32.290275,Uganda
-US,37.09024,-95.712891,United States
-UY,-32.522779,-55.765835,Uruguay
-UZ,41.377491,64.585262,Uzbekistan
-VA,41.902916,12.453389,Vatican City
-VC,12.984305,-61.287228,Saint Vincent and the Grenadines
-VE,6.42375,-66.58973,Venezuela
-VN,14.058324,108.277199,Vietnam
-VU,-15.376706,166.959158,Vanuatu
-WS,-13.759029,-172.104629,Samoa
-YE,15.552727,48.516388,Yemen
-ZA,-30.559482,22.937506,South Africa
-ZM,-13.133897,27.849332,Zambia
-ZW,-19.015438,29.154857,Zimbabwe
+country,lat,lon,continent,hemisphere
+Afghanistan,34.5553,69.2075,Asia,Northern & Eastern
+Albania,41.3275,19.8187,Europe,Northern & Eastern
+Algeria,36.7538,3.0588,Africa,Northern & Eastern
+Andorra,42.5063,1.5218,Europe,Northern & Eastern
+Angola,-8.839,13.2345,Africa,Southern & Eastern
+Antigua and Barbuda,17.1274,-61.8468,North America,Northern & Western
+Argentina,-34.6037,-58.3816,South America,Southern & Western
+Armenia,40.1792,44.5152,Asia,Northern & Eastern
+Australia,-35.2809,149.13,Oceania,Southern & Eastern
+Austria,48.2082,16.3738,Europe,Northern & Eastern
+Azerbaijan,40.4093,49.8671,Asia,Northern & Eastern
+Bahamas,25.0343,-77.3963,North America,Northern & Western
+Bahrain,26.2285,50.586,Asia,Northern & Eastern
+Bangladesh,23.8103,90.4125,Asia,Northern & Eastern
+Barbados,13.1132,-59.5988,North America,Northern & Western
+Belarus,53.9006,27.559,Europe,Northern & Eastern
+Belgium,50.8503,4.3517,Europe,Northern & Eastern
+Belize,17.251,-88.759,North America,Northern & Western
+Benin,6.3654,2.4183,Africa,Northern & Eastern
+Bhutan,27.4728,89.6339,Asia,Northern & Eastern
+Bolivia,-16.4897,-68.1193,South America,Southern & Western
+Bosnia and Herzegovina,43.8563,18.4131,Europe,Northern & Eastern
+Botswana,-24.658,25.9122,Africa,Southern & Eastern
+Brazil,-15.7939,-47.8828,South America,Southern & Western
+Brunei,4.8903,114.9404,Asia,Northern & Eastern
+Bulgaria,42.6977,23.3219,Europe,Northern & Eastern
+Burkina Faso,12.3714,-1.5197,Africa,Northern & Western
+Burundi,-3.3835,29.3644,Africa,Southern & Eastern
+Cabo Verde,14.9177,-23.5092,Africa,Northern & Western
+Cambodia,11.5564,104.9282,Asia,Northern & Eastern
+Cameroon,3.848,11.5021,Africa,Northern & Eastern
+Canada,45.4215,-75.6972,North America,Northern & Western
+Central African Republic,4.3947,18.5582,Africa,Northern & Eastern
+Chad,12.1348,15.0557,Africa,Northern & Eastern
+Chile,-33.4489,-70.6693,South America,Southern & Western
+China,39.9042,116.4074,Asia,Northern & Eastern
+Colombia,4.711,-74.0721,South America,Northern & Western
+Comoros,-11.7172,43.2473,Africa,Southern & Eastern
+Congo (Democratic Republic),-4.4419,15.2663,Africa,Southern & Eastern
+Congo (Republic),-4.2634,15.2832,Africa,Southern & Eastern
+Costa Rica,9.9281,-84.0907,North America,Northern & Western
+Cote d'Ivoire,6.8276,-5.2767,Africa,Northern & Western
+Croatia,45.815,15.9819,Europe,Northern & Eastern
+Cuba,23.1136,-82.3666,North America,Northern & Western
+Cyprus,35.1856,33.3823,Asia,Northern & Eastern
+Czech Republic,50.0755,14.4378,Europe,Northern & Eastern
+Denmark,55.6761,12.5683,Europe,Northern & Eastern
+Djibouti,11.5883,43.145,Africa,Northern & Eastern
+Dominica,15.3092,-61.3794,North America,Northern & Western
+Dominican Republic,18.4861,-69.9312,North America,Northern & Western
+Ecuador,-0.1807,-78.4678,South America,Southern & Western
+Egypt,30.0444,31.2357,Africa,Northern & Eastern
+El Salvador,13.6929,-89.2182,North America,Northern & Western
+Equatorial Guinea,3.7504,8.7469,Africa,Northern & Eastern
+Eritrea,15.3228,38.9251,Africa,Northern & Eastern
+Estonia,59.437,24.7535,Europe,Northern & Eastern
+Eswatini,-26.3055,31.1367,Africa,Southern & Eastern
+Ethiopia,9.0054,38.7636,Africa,Northern & Eastern
+Fiji,-18.1248,178.4501,Oceania,Southern & Eastern
+Finland,60.1699,24.9384,Europe,Northern & Eastern
+France,48.8566,2.3522,Europe,Northern & Eastern
+Gabon,0.4162,9.4673,Africa,Northern & Eastern
+Gambia,13.4545,-16.579,Africa,Northern & Western
+Georgia,41.7151,44.8271,Asia,Northern & Eastern
+Germany,52.52,13.405,Europe,Northern & Eastern
+Ghana,5.6037,-0.187,Africa,Northern & Western
+Greece,37.9838,23.7275,Europe,Northern & Eastern
+Grenada,12.0561,-61.7484,North America,Northern & Western
+Guatemala,14.6349,-90.5069,North America,Northern & Western
+Guinea,9.537,-13.6773,Africa,Northern & Western
+Guinea-Bissau,11.8817,-15.5984,Africa,Northern & Western
+Guyana,6.8013,-58.1551,South America,Northern & Western
+Haiti,18.5944,-72.3074,North America,Northern & Western
+Honduras,14.0723,-87.1921,North America,Northern & Western
+Hungary,47.4979,19.0402,Europe,Northern & Eastern
+Iceland,64.1466,-21.9426,Europe,Northern & Western
+India,28.6139,77.209,Asia,Northern & Eastern
+Indonesia,-6.2088,106.8456,Asia,Southern & Eastern
+Iran,35.6892,51.389,Asia,Northern & Eastern
+Iraq,33.3152,44.3661,Asia,Northern & Eastern
+Ireland,53.3498,-6.2603,Europe,Northern & Western
+Israel,31.7683,35.2137,Asia,Northern & Eastern
+Italy,41.9028,12.4964,Europe,Northern & Eastern
+Jamaica,18.0179,-76.8099,North America,Northern & Western
+Japan,35.6762,139.6503,Asia,Northern & Eastern
+Jordan,31.9454,35.9284,Asia,Northern & Eastern
+Kazakhstan,51.1605,71.4272,Asia,Northern & Eastern
+Kenya,-1.2921,36.8219,Africa,Southern & Eastern
+Kiribati,1.3262,172.9769,Oceania,Northern & Eastern
+Kuwait,29.3759,47.9774,Asia,Northern & Eastern
+Kyrgyzstan,42.8746,74.5698,Asia,Northern & Eastern
+Laos,17.9757,102.6331,Asia,Northern & Eastern
+Latvia,56.9496,24.1052,Europe,Northern & Eastern
+Lebanon,33.8938,35.5018,Asia,Northern & Eastern
+Lesotho,-29.3175,27.4837,Africa,Southern & Eastern
+Liberia,6.3156,-10.8074,Africa,Northern & Western
+Libya,32.8872,13.1913,Africa,Northern & Eastern
+Liechtenstein,47.141,9.5209,Europe,Northern & Eastern
+Lithuania,54.6872,25.2797,Europe,Northern & Eastern
+Luxembourg,49.6116,6.1319,Europe,Northern & Eastern
+Madagascar,-18.8792,47.5079,Africa,Southern & Eastern
+Malawi,-13.9626,33.7741,Africa,Southern & Eastern
+Malaysia,3.139,101.6869,Asia,Northern & Eastern
+Maldives,4.1755,73.5093,Asia,Northern & Eastern
+Mali,12.6392,-8.0029,Africa,Northern & Western
+Malta,35.8992,14.5141,Europe,Northern & Eastern
+Marshall Islands,7.1315,171.1845,Oceania,Northern & Eastern
+Mauritania,18.0735,-15.9582,Africa,Northern & Western
+Mauritius,-20.1609,57.5012,Africa,Southern & Eastern
+Mexico,19.4326,-99.1332,North America,Northern & Western
+Micronesia,6.9172,158.185,Oceania,Northern & Eastern
+Moldova,47.0105,28.8638,Europe,Northern & Eastern
+Monaco,43.7384,7.4246,Europe,Northern & Eastern
+Mongolia,47.8864,106.9057,Asia,Northern & Eastern
+Montenegro,42.4304,19.2594,Europe,Northern & Eastern
+Morocco,34.0209,-6.8416,Africa,Northern & Western
+Mozambique,-25.9692,32.5732,Africa,Southern & Eastern
+Myanmar,19.7633,96.0785,Asia,Northern & Eastern
+Namibia,-22.5609,17.0658,Africa,Southern & Eastern
+Nauru,-0.5228,166.9315,Oceania,Southern & Eastern
+Nepal,27.7172,85.324,Asia,Northern & Eastern
+Netherlands,52.3676,4.9041,Europe,Northern & Eastern
+New Zealand,-41.2865,174.7762,Oceania,Southern & Eastern
+Nicaragua,12.115,-86.2362,North America,Northern & Western
+Niger,13.5116,2.1254,Africa,Northern & Eastern
+Nigeria,9.0765,7.3986,Africa,Northern & Eastern
+North Korea,39.0392,125.7625,Asia,Northern & Eastern
+North Macedonia,41.9981,21.4254,Europe,Northern & Eastern
+Norway,59.9139,10.7522,Europe,Northern & Eastern
+Oman,23.5859,58.4059,Asia,Northern & Eastern
+Pakistan,33.6844,73.0479,Asia,Northern & Eastern
+Palau,7.3423,134.4788,Oceania,Northern & Eastern
+Palestine,31.7683,35.2137,Asia,Northern & Eastern
+Panama,8.9824,-79.5199,North America,Northern & Western
+Papua New Guinea,-9.4438,147.1803,Oceania,Southern & Eastern
+Paraguay,-25.2637,-57.5759,South America,Southern & Western
+Peru,-12.0464,-77.0428,South America,Southern & Western
+Philippines,14.5995,120.9842,Asia,Northern & Eastern
+Poland,52.2297,21.0122,Europe,Northern & Eastern
+Portugal,38.7223,-9.1393,Europe,Northern & Western
+Qatar,25.2854,51.531,Asia,Northern & Eastern
+Romania,44.4268,26.1025,Europe,Northern & Eastern
+Russia,55.7558,37.6173,Europe,Northern & Eastern
+Rwanda,-1.9403,30.0588,Africa,Southern & Eastern
+Saint Kitts and Nevis,17.2977,-62.7269,North America,Northern & Western
+Saint Lucia,14.0101,-60.9875,North America,Northern & Western
+Saint Vincent and the Grenadines,13.1608,-61.2248,North America,Northern & Western
+Samoa,-13.8333,-171.7667,Oceania,Southern & Western
+San Marino,43.9424,12.4578,Europe,Northern & Eastern
+Sao Tome and Principe,0.3302,6.7333,Africa,Northern & Eastern
+Saudi Arabia,24.7136,46.6753,Asia,Northern & Eastern
+Senegal,14.7167,-17.4677,Africa,Northern & Western
+Serbia,44.7866,20.4489,Europe,Northern & Eastern
+Seychelles,-4.6191,55.4513,Africa,Southern & Eastern
+Sierra Leone,8.484,-13.2299,Africa,Northern & Western
+Singapore,1.3521,103.8198,Asia,Northern & Eastern
+Slovakia,48.1486,17.1077,Europe,Northern & Eastern
+Slovenia,46.0569,14.5058,Europe,Northern & Eastern
+Solomon Islands,-9.4456,159.9729,Oceania,Southern & Eastern
+Somalia,2.0433,45.3369,Africa,Northern & Eastern
+South Africa,-25.7479,28.2293,Africa,Southern & Eastern
+South Korea,37.5665,126.978,Asia,Northern & Eastern
+South Sudan,4.8517,31.5713,Africa,Northern & Eastern
+Spain,40.4168,-3.7038,Europe,Northern & Western
+Sri Lanka,6.9271,79.8612,Asia,Northern & Eastern
+Sudan,15.5007,32.5599,Africa,Northern & Eastern
+Suriname,5.852,-55.2038,South America,Northern & Western
+Sweden,59.3293,18.0686,Europe,Northern & Eastern
+Switzerland,46.948,7.4474,Europe,Northern & Eastern
+Syria,33.5138,36.2765,Asia,Northern & Eastern
+Taiwan,25.033,121.5654,Asia,Northern & Eastern
+Tajikistan,38.5598,68.787,Asia,Northern & Eastern
+Tanzania,-6.7924,39.2083,Africa,Southern & Eastern
+Thailand,13.7563,100.5018,Asia,Northern & Eastern
+Timor-Leste,-8.5579,125.5736,Asia,Southern & Eastern
+Togo,6.1375,1.2123,Africa,Northern & Eastern
+Tonga,-21.1394,-175.2049,Oceania,Southern & Western
+Trinidad and Tobago,10.6667,-61.5167,North America,Northern & Western
+Tunisia,36.8065,10.1815,Africa,Northern & Eastern
+Turkey,39.9334,32.8597,Asia,Northern & Eastern
+Turkmenistan,37.9601,58.3262,Asia,Northern & Eastern
+Tuvalu,-8.5207,179.1962,Oceania,Southern & Eastern
+Uganda,0.3476,32.5825,Africa,Northern & Eastern
+Ukraine,50.4501,30.5234,Europe,Northern & Eastern
+United Arab Emirates,24.4539,54.3773,Asia,Northern & Eastern
+United Kingdom,51.5074,-0.1278,Europe,Northern & Western
+United States,38.9072,-77.0369,North America,Northern & Western
+Uruguay,-34.9011,-56.1645,South America,Southern & Western
+Uzbekistan,41.2995,69.2401,Asia,Northern & Eastern
+Vanuatu,-17.7333,168.3167,Oceania,Southern & Eastern
+Vatican City,41.9029,12.4534,Europe,Northern & Eastern
+Venezuela,10.4806,-66.8983,South America,Northern & Western
+Vietnam,21.0278,105.8342,Asia,Northern & Eastern
+Yemen,15.3694,44.191,Asia,Northern & Eastern
+Zambia,-15.3875,28.3228,Africa,Southern & Eastern
+Zimbabwe,-17.8252,31.0335,Africa,Southern & Eastern
