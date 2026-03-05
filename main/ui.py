@@ -64,9 +64,12 @@ def draw_game_ui(
 
     screen.blit(bg_play,(0,0))
 
-    # Title
-    title = big_font.render("Guess The Country", True, (255,255,255))
-    screen.blit(title,(480,10))
+    # Title background
+    pygame.draw.rect(SCREEN,(30,30,50),(440,20,400,90),border_radius=25)
+
+    title_font = pygame.font.SysFont(None,50)
+    title = title_font.render("Guess The Country", True, (255,255,255))
+    screen.blit(title, title.get_rect(center=(640,65)))
 
     # message
     msg_surface = font.render(message, True, (255,255,255))
@@ -114,6 +117,8 @@ def draw_game_ui(
         screen.blit(hint_surface,(440,545))
 
     # Hint button
+    pygame.draw.rect(SCREEN,(40,40,60),(40,620,160,60),border_radius=15)
+
     hint_button.changeColor(mouse_pos)
     hint_button.update(screen)
 
@@ -237,9 +242,21 @@ def play():
 
     random_country = df.sample(1).iloc[0]
 
-    hint_button = button.Button(image=None,pos=(640,220),text_input="HINT",font=get_font(40),base_color=(255,255,255),hovering_color=(255,0,0))
-
-    back_button = button.Button(image=None,pos=(1200,40),text_input="BACK",font=get_font(35),base_color=(255,255,255),hovering_color=(255,0,0))
+    hint_button = button.Button(
+    image=None,
+    pos=(120,650),
+    text_input="HINT",
+    font=get_font(35),
+    base_color=(255,255,255),
+    hovering_color=(255,80,80)
+)
+    back_button = button.Button(
+        image=None,pos=(1200,40),
+        text_input="BACK",
+        font=get_font(35),
+        base_color=(255,255,255),
+        hovering_color=(255,0,0)
+)
 
     running = True
     while running:
@@ -326,9 +343,10 @@ def play():
             mouse_pos,
             message
         )
+        pygame.draw.rect(SCREEN,(30,30,50),(500,150,280,70),border_radius=20)
 
         count_surface = big_font.render(f"Guesses : {count}",True,(255,255,255))
-        SCREEN.blit(count_surface,(560,70))
+        SCREEN.blit(count_surface,count_surface.get_rect(center=(640,185)))
 
         pygame.display.flip()
         clock.tick(60)
@@ -374,8 +392,14 @@ def main_menu():
 
         mouse_pos = pygame.mouse.get_pos()
 
-        title = get_font(90).render("GUESS THE COUNTRY",True,"#b68f40")
+        pygame.draw.rect(SCREEN,(30,30,50),(220,10,840,160),border_radius=40)
+
+        title = get_font(100).render("GUESS THE COUNTRY",True,"#b68f40")
         SCREEN.blit(title,title.get_rect(center=(640,100)))
+
+        pygame.draw.rect(SCREEN,(40,40,60),(490,210,300,80),border_radius=20)
+        pygame.draw.rect(SCREEN,(40,40,60),(490,360,300,80),border_radius=20)
+        pygame.draw.rect(SCREEN,(40,40,60),(490,510,300,80),border_radius=20)
 
         play_button = button.Button(
             image=None,
