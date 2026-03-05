@@ -9,7 +9,7 @@ from ui import draw_game_ui
 
 pygame.init()
 
-screen = pygame.display.set_mode((1080 ,900))
+screen = pygame.display.set_mode((1000 ,700))
 pygame.display.set_caption("เกมทายประทาศจากเข็มทิศ")
 font = pygame.font.SysFont(None,28)
 big_font = pygame.font.SysFont(None,40)
@@ -25,16 +25,9 @@ df = pd.read_csv(data_path)
 
 #random country
 random_country = df.sample(1).iloc[0]
-print(f"Random Country: {random_country['name']} (Lat: {random_country['latitude']}, Lon: {random_country['longitude']})")
+print(f"Random Country: {random_country['country']} (Lat: {random_country['lat']}, Lon: {random_country['lon']})")
 
-#เก็บคำใบ้ของแต่ละประเทศ (โดยมีคำใบ้เกี่ยว ทวีปที่อยู่ ,ขึ้นต้นด้วยอะไร)
-country_hint = {
-    "thailand": {"continent": "Asia"},
-    "japan": {"continent": "Asia"},
-    "france": {"continent": "Europe"},
-    "brazil": {"continent": "South America"},
-    "canada": {"continent": "North America"}
-}
+#เก็บคำใบ้ของแต่ละประเทศ (โดยมีคำใบ้เกี่ยว ทวีปที่อยู่ ,ขึ้นต้นด้วยอะไร)
 
 hint_text = ""
 current_bearing = None
@@ -62,24 +55,25 @@ while running:
 
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_RETURN:#enter to submit
-                guess = df[df["name"].str.lower() == input_text.lower()].iloc[0] if not df[df["name"].str.lower() == input_text.lower()].empty else None
+                guess = df[df["country"].str.lower() == input_text.lower()]
+                guess = guess.iloc[0] if not guess.empty else None
 
                 if guess is not None:
                     count += 1
-                    if guess["name"].lower() == random_country["name"].lower():
-                        message = f"Correct! {random_country["name"]}"
+                    if guess["country"].lower() == random_country["country"].lower():
+                        message = f"Correct! {random_country['country']}"
                     else:
-                        lat1, lon1 = guess["latitude"], guess["longitude"]
-                        lat2, lon2 = random_country["latitude"], random_country["longitude"]
-                        disstance = round(haversine(lat1, lon1,lat2,lon2))
+                        lat1, lon1 = guess["lat"], guess["lon"]
+                        lat2, lon2 = random_country["lat"], random_country["lon"]
+                        distance = round(haversine(lat1, lon1,lat2,lon2))
                         bearing = compress_get_bearing(lat1, lon1, lat2, lon2)
                         direction = get_direction(bearing)
-                        continent = country_hint.get(random_country["name"].lower(), {}).get("continent", "Unknown")
+                        continent = random_country["continent"]
                         hemisphere = get_hemisphere(lat2,lon2)
 
-                        guess_history.append((guess["name"], disstance, direction))
-                        current_bearing = compress_get_bearing(lat1, lon1,lat2,lon2)
-                        message = f"{direction} | {disstance} km | {hemisphere} | {continent}"
+                        guess_history.append((guess["country"], distance, direction))
+                        current_bearing = bearing
+                        #message = f"{direction} | {distance} km | {hemisphere} | {continent}"
                 else:
                     message = "Country not found"
                 input_text = ""
@@ -92,24 +86,22 @@ while running:
             if hint_button.checkForInput(mouse_pos):#press hint button
 
                 if hint_count < max_hints:
-                    lat, lon = random_country["latitude"], random_country["longitude"]
 
                     if hint_count == 0:
-                        hint_text = f"Hint 1: {get_hemisphere(lat, lon)} Hemisphere"
+                        hint_text = f"Hint 1: {random_country['hemisphere']} Hemisphere"
 
                     elif hint_count == 1:
-                        hint_text = f"Hint 2: Continent = {country_hint.get(random_country['name'].lower(), {}).get('continent', 'Unknown')}"
-
+                        hint_text = f"Hint 2: Continent = {random_country['continent']}"
                     elif hint_count == 2:
-                        hint_text = f"Hint 3: Starts with '{random_country['name'].upper()[0]}'"
+                        hint_text = f"Hint 3: Starts with '{random_country['country'].upper()[0]}'"
 
                     hint_count += 1
-            else:
-                hint_text = "No more hints!"
+                else:
+                    hint_text = "No more hints!"
 
     #ค้นหาชื่อประเทศตามตัวอักษร
-    suggestions = [c for c in df["name"] if c.lower().startswith(input_text.lower())]
-
+    suggestions = [c for c in df["country"] if c.lower().startswith(input_text.lower())]
+    
     display_angle = draw_game_ui(
         screen,
         font,
@@ -122,6 +114,7 @@ while running:
         display_angle,
         hint_button,
         mouse_pos,
+        message
     )
     pygame.display.flip()
     clock.tick(60)
