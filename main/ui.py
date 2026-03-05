@@ -28,6 +28,65 @@ bg_play = pygame.transform.scale(bg_play, (1280,720))
 def get_font(size):
     return pygame.font.SysFont(None,size)
 
+def _truncate_text(font, text, max_width):
+    if font.size(text)[0] <= max_width:
+        return text
+
+    suffix = "..."
+    if font.size(suffix)[0] > max_width:
+        return ""
+
+    trimmed = text
+    while trimmed and font.size(trimmed + suffix)[0] > max_width:
+        trimmed = trimmed[:-1]
+    return trimmed.rstrip() + suffix
+
+def _wrap_text(font, text, max_width):
+    if not text:
+        return [""]
+
+    lines = []
+    current = ""
+
+    for char in text:
+        if char == "\n":
+            lines.append(current.rstrip())
+            current = ""
+            continue
+
+        candidate = current + char
+        if font.size(candidate)[0] <= max_width:
+            current = candidate
+            continue
+
+        if current:
+            lines.append(current.rstrip())
+            current = "" if char == " " else char
+        else:
+            lines.append(char)
+
+    if current or not lines:
+        lines.append(current.rstrip())
+
+    return [line for line in lines if line] or [""]
+
+def _draw_wrapped_text(screen, font, text, color, x, y, max_width, max_lines=None):
+    lines = _wrap_text(font, text, max_width)
+
+    if max_lines is not None and len(lines) > max_lines:
+        lines = lines[:max_lines]
+        suffix = "..."
+        while lines[-1] and font.size(lines[-1] + suffix)[0] > max_width:
+            lines[-1] = lines[-1][:-1]
+        lines[-1] = lines[-1].rstrip() + suffix
+
+    line_height = font.get_linesize()
+    for idx, line in enumerate(lines):
+        surface = font.render(line, True, color)
+        screen.blit(surface, (x, y + idx * line_height))
+
+    return len(lines) * line_height
+
 font = get_font(28)
 big_font = get_font(40)
 
@@ -72,12 +131,14 @@ def draw_game_ui(
     screen.blit(title, title.get_rect(center=(640,65)))
 
     # message
-    msg_surface = font.render(message, True, (255,255,255))
+    safe_message = _truncate_text(font, message, 360)
+    msg_surface = font.render(safe_message, True, (255,255,255))
     screen.blit(msg_surface,(50,40))
 
     # Input box
     pygame.draw.rect(screen,(40,40,60),(40,80,300,50),border_radius=10)
-    text_surface = font.render(input_text,True,(255,255,255))
+    safe_input_text = _truncate_text(font, input_text, 250)
+    text_surface = font.render(safe_input_text,True,(255,255,255))
     screen.blit(text_surface,(60,95))
 
     label = font.render("Type country:",True,(200,200,200))
@@ -96,25 +157,45 @@ def draw_game_ui(
     display_angle = _draw_compass(screen,current_bearing,display_angle)
 
     # Guess history panel
-    pygame.draw.rect(screen,(40,40,60),(880,150,360,420),border_radius=10)
+    history_rect = pygame.Rect(860, 150, 380, 420)
+    pygame.draw.rect(screen, (40, 40, 60), history_rect, border_radius=10)
 
-    history_title = big_font.render("History",True,(255,255,255))
-    screen.blit(history_title,(1020,130))
+    history_title = big_font.render("History", True, (255, 255, 255))
+    screen.blit(history_title, history_title.get_rect(center=(history_rect.centerx, 170)))
 
-    y_offset = 180
+    y_offset = 205
+    max_history_bottom = history_rect.bottom - 20
     for guess,distance,direction in guess_history[-10:]:
         line = f"{guess} | {distance} km | {direction}"
-        line_surface = font.render(line,True,(255,255,255))
-        screen.blit(line_surface,(920,y_offset))
-        y_offset += 40
+        used_height = _draw_wrapped_text(
+            screen,
+            font,
+            line,
+            (255, 255, 255),
+            history_rect.x + 20,
+            y_offset,
+            history_rect.width - 40,
+            max_lines=2,
+        )
+        y_offset += used_height + 8
+        if y_offset >= max_history_bottom:
+            break
 
     # Hint text
     if hint_text != "":
         pygame.draw.rect(screen,(30,30,30),(420,520,450,70),border_radius=12)
         pygame.draw.rect(screen,(255,255,255),(420,520,450,70),2,border_radius=12)
 
-        hint_surface = font.render("Hint: " + hint_text, True, (255,255,0))
-        screen.blit(hint_surface,(440,545))
+        _draw_wrapped_text(
+            screen,
+            font,
+            "Hint: " + hint_text,
+            (255, 255, 0),
+            440,
+            532,
+            410,
+            max_lines=2,
+        )
 
     # Hint button
     pygame.draw.rect(SCREEN,(40,40,60),(40,620,160,60),border_radius=15)
@@ -413,7 +494,7 @@ def main_menu():
         rules_button = button.Button(
             image=None,
             pos=(640,400),
-            text_input="rules",
+            text_input="RULES",
             font=get_font(70),
             base_color="#d7fcd4",
             hovering_color="White"
