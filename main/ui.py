@@ -10,7 +10,7 @@ from distance import haversine
 pygame.init()
 
 SCREEN = pygame.display.set_mode((1280,720))
-pygame.display.set_caption("Guess The Country")
+pygame.display.set_caption("GEOGUESS")
 
 clock = pygame.time.Clock()
 
@@ -354,26 +354,63 @@ def play():
 
 def rules():
 
-    while True:
-        SCREEN.fill((255,255,255))
-        text = big_font.render("rules",True,(0,0,0))
-        SCREEN.blit(text,(540,200))
+    rules_text = [
+        "1. The system randomly selects one target country.",
+        "2. Type the name of a country and press ENTER to guess.",
+        "3. If the guess is incorrect, the system will show:",
+        "   - Distance (km) from your guess to the target country",
+        "   - Direction of the target country (N, NE, E, SE, S, SW, W, NW)",
+        "4. The compass shows the direction of the target country.",
+        "5. Press HINT to receive clues (maximum 3 hints):",
+        "   - Hemisphere",
+        "   - Continent",
+        "   - First letter of the country",
+        "6. The history panel shows previous guesses.",
+        "7. The game ends when the correct country is guessed.",
+        "8. Total number of guesses will be displayed."
+    ]
 
+    while True:
+
+        SCREEN.blit(bg_menu,(0,0))
+        mouse_pos = pygame.mouse.get_pos()
+
+        # กล่องพื้นหลังใหญ่
+        panel = pygame.Surface((1100,600))
+        panel.set_alpha(170)
+        panel.fill((20,20,30))
+        SCREEN.blit(panel,(90,70))
+
+        # กรอบ
+        pygame.draw.rect(SCREEN,(230,230,230),(90,70,1100,600),4,border_radius=20)
+
+        # Title
+        title = get_font(90).render("GAME RULES",True,"#b68f40")
+        SCREEN.blit(title,title.get_rect(center=(640,140)))
+
+        y = 200
+
+        # ตัวหนังสือ
+        for line in rules_text:
+            text_surface = get_font(32).render(line,True,(255,255,255))
+            SCREEN.blit(text_surface,(140,y))
+            y += 36
+
+        # ปุ่ม BACK ซ้ายบน
         back = button.Button(
             image=None,
-            pos=(640,460),
+            pos=(120,40),
             text_input="BACK",
-            font=get_font(60),
-            base_color="Black",
+            font=get_font(50),
+            base_color="White",
             hovering_color="Green"
         )
-
-        mouse_pos = pygame.mouse.get_pos()
 
         back.changeColor(mouse_pos)
         back.update(SCREEN)
 
         for event in pygame.event.get():
+
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
@@ -383,7 +420,6 @@ def rules():
                     return
 
         pygame.display.update()
-
 
 def main_menu():
 
@@ -413,7 +449,7 @@ def main_menu():
         rules_button = button.Button(
             image=None,
             pos=(640,400),
-            text_input="rules",
+            text_input="RULE",
             font=get_font(70),
             base_color="#d7fcd4",
             hovering_color="White"
