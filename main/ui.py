@@ -14,7 +14,7 @@ pygame.display.set_caption("GEOGUESS")
 
 clock = pygame.time.Clock()
 
-#รายชื่อประเทศทั้งหมด (Country Data) เก็บเป็น(ละติจูด,ลองติจูด,ทวีป,ซีกโลก)
+#รายชื่อประเทศทั้งหมด (Country Data) เก็บเป็น(ละติจูด,ลองติจูด,ทวีป,ซีกโลก) (csv)
 base_path = Path(__file__).resolve().parent.parent
 data_path = base_path / "data" / "countries.csv"
 assets = base_path / "assets"
@@ -250,10 +250,10 @@ def _draw_compass(screen,current_bearing,display_angle):
 
     for text,degree in directions:
 
-        rad = math.radians(degree-90)
+        rad = math.radians(degree)
 
-        x = center[0] + math.cos(rad)*(radius-30)
-        y = center[1] + math.sin(rad)*(radius-30)
+        x = center[0] + math.sin(rad)*(radius-30)
+        y = center[1] - math.cos(rad)*(radius-30)
 
         label = font.render(text,True,(255,255,255))
         screen.blit(label,label.get_rect(center=(x,y)))
