@@ -511,7 +511,7 @@ def main_menu():
 
         pygame.draw.rect(SCREEN,(30,30,50),(220,10,840,160),border_radius=40)
 
-        title = get_font(100).render("GUESS THE COUNTRY",True,"#b68f40")
+        title = get_font(100).render("GEOGUESS",True,"#b68f40")
         SCREEN.blit(title,title.get_rect(center=(640,100)))
 
         pygame.draw.rect(SCREEN,(40,40,60),(490,210,300,80),border_radius=20)
@@ -530,7 +530,7 @@ def main_menu():
         rules_button = button.Button(
             image=None,
             pos=(640,400),
-            text_input="rules",
+            text_input="RULES",
             font=get_font(70),
             base_color="#d7fcd4",
             hovering_color="White"

@@ -17,7 +17,7 @@ def compress_get_bearing(lat1, lon1, lat2, lon2):
 
     x = sin(dlon) * cos(rad_lat2)
     y = cos(rad_lat1) * sin(rad_lat2) - sin(rad_lat1) * cos(rad_lat2) * cos(dlon)
-    bearing = degrees(atan2(y,x))
+    bearing = degrees(atan2(x,y))
 
     return (bearing + 360) % 360
 
