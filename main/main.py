@@ -1,10 +1,10 @@
-import pygame
-from ui import play
+"""Program entrypoint for the game."""
 
-pygame.init()
+from menu import main_menu
 
 def main():
-    play()
+    """Start the main menu loop."""
+    main_menu()
 
 if __name__ == "__main__":
     main()

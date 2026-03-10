@@ -1,3 +1,5 @@
+"""Legacy prototype of the country guessing game (kept for reference)."""
+
 import pygame
 import math
 import sys
@@ -14,7 +16,7 @@ clock = pygame.time.Clock()
 #icon = pygame.image.load()
 #pygame.display.set_icon(icon)
 
-#รายชื่อประเทศทั้งหมด (Country Data) เก็บเป็น(ละติจูด,ลองติจูด)
+# Country list with coordinates (latitude, longitude).
 countries = {
     "thailand": (13.7563, 100.5018),
     "japan": (35.6762, 139.6503),
@@ -25,10 +27,10 @@ countries = {
 
 country_name = sorted(countries.keys())
 
-#random country
+# Random target country.
 random_country = random.choice(country_name)
 
-#เก็บคำใบ้ของแต่ละประเทศ (โดยมีคำใบ้เกี่ยว ทวีปที่อยู่ ,ขึ้นต้นด้วยอะไร)
+# Per-country hint data (continent, first letter, etc.).
 country_hint = {
     "thailand": {"continent": "Asia"},
     "japan": {"continent": "Asia"},
@@ -38,9 +40,10 @@ country_hint = {
 }
 hint_text = ""
 
-#function คำนวณส่วนระยะทางโดยใช้สมการ Haversine
-#lat = ละติจูด , lon = ลองติจูด
+# Compute distance using the Haversine formula.
+# lat = latitude, lon = longitude.
 def haversine(lat1,lon1,lat2,lon2):
+    """Return the great-circle distance between two coordinates in km."""
     #d = 2R * arcsin( sqrt( sin²((lat2-lat1)/2) + cos(lat1)cos(lat2)sin²((lon2-lon1)/2) ) )
     R_earth = 6371 #km
     rad_lat1 = math.radians(lat1)
@@ -52,8 +55,9 @@ def haversine(lat1,lon1,lat2,lon2):
     c = 2 * math.asin(math.sqrt(a))
     return R_earth * c
 
-#function หาทิศทางของประเทศที่ระบบสุ่มไว้ เทียบกับ ประเทศที่เราทายว่าอยู่ทิศไหน
+# Compute a coarse direction from guess to target.
 def get_direction(lat1, lon1, lat2, lon2):
+    """Return a cardinal/intercardinal direction string."""
     d_lat = lat2 - lat1
     d_lon = lon2 - lon1
 
@@ -67,11 +71,12 @@ def get_direction(lat1, lon1, lat2, lon2):
 
     return vertical + "-" + horizontal
 
-#function คำนวณองศาของเข็มที่จะชี้
+# Compute the compass bearing angle.
 # θ = atan2(x,y)
 # x=sin(Δλ)cos(ϕ2​)
 # y=cos(ϕ1​)sin(ϕ2​)−sin(ϕ1​)cos(ϕ2​)cos(Δλ)
 def compress_get_bearing(lat1, lon1, lat2, lon2):
+    """Compute the bearing angle from (lat1, lon1) to (lat2, lon2)."""
     rad_lat1 = math.radians(lat1)
     rad_lat2 = math.radians(lat2)
     d_rad_lon = math.radians(lon2 - lon1)
@@ -83,6 +88,7 @@ def compress_get_bearing(lat1, lon1, lat2, lon2):
     return (bearing + 360) % 360
 
 def get_hemisphere(lat, lon):
+    """Return a human-readable hemisphere label for the coordinate."""
     ns = "Northern" if lat>0 else "Southern"
     ew = "Eastern" if lon>0 else "Western"
     return f"{ns} & {ew}"
@@ -104,7 +110,7 @@ hint_button = Button(image=None,pos=(640,250),text_input="HINT",font=button_font
 
 running = True
 while running:
-    #กำหนดสี
+    # Fill background color.
     screen.fill((20,25,40))
     mouse_pos = pygame.mouse.get_pos()
 
@@ -159,7 +165,7 @@ while running:
             else:
                 hint_text = "No more hints!"
 
-    #ค้นหาชื่อประเทศตามตัวอักษร
+    # Suggest countries that match the current input.
     suggestions = [c for c in country_name if c.startswith(input_text.lower())]
 
     #input 
@@ -213,7 +219,7 @@ while running:
 
         pygame.draw.circle(screen, (255,255,255), compass_center, 6)
 
-    #render ประวัติ
+    # Render guess history.
     pygame.draw.rect(screen, (50,50,70),(600,50,350,500))
     panel_title = big_font .render("Guesses",True,(255,255,255))
     screen.blit(panel_title, (700,60))

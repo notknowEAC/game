@@ -1,0 +1,21 @@
+"""Shared configuration values for UI layout and gameplay limits."""
+
+# Screen configuration.
+SCREEN_WIDTH = 1280
+SCREEN_HEIGHT = 720
+SCREEN_SIZE = (SCREEN_WIDTH, SCREEN_HEIGHT)
+
+# Gameplay limits.
+MAX_HINTS = 3
+MAX_HISTORY = 10
+MAX_SUGGESTIONS = 6
+
+# UI color palette.
+COLOR_PANEL = (40, 40, 60)
+COLOR_PANEL_DARK = (30, 30, 50)
+COLOR_TEXT = (255, 255, 255)
+COLOR_LABEL = (200, 200, 200)
+COLOR_SUGGESTION = (200, 200, 100)
+COLOR_HINT = (255, 255, 0)
+COLOR_BORDER = (255, 255, 255)
+COLOR_TITLE = "#b68f40"
