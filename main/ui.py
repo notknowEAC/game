@@ -100,6 +100,7 @@ count = 0
 
 hint_count = 0
 max_hints = 3
+correct_popup_until = 0
 
 #random country
 random_country = df.sample(1).iloc[0]
@@ -310,7 +311,7 @@ def _draw_hint_text(screen,hint_text):
 def play():
 
     global input_text, hint_text, display_angle, current_bearing
-    global guess_history, hint_count, message, count, random_country
+    global guess_history, hint_count, message, count, random_country, correct_popup_until
 
     input_text = ""
     guess_history = []
@@ -320,6 +321,7 @@ def play():
     display_angle = 0
     count = 0
     hint_count = 0
+    correct_popup_until = 0
 
     random_country = df.sample(1).iloc[0]
 
@@ -357,6 +359,7 @@ def play():
                     if guess is not None:
                         if guess["country"].lower() == random_country["country"].lower():
                             message = f"Correct! {random_country['country']}"
+                            correct_popup_until = pygame.time.get_ticks() + 1500
 
                         else:
                             lat1,lon1 = guess["lat"],guess["lon"]
@@ -424,6 +427,13 @@ def play():
             mouse_pos,
             message
         )
+        if pygame.time.get_ticks() < correct_popup_until:
+            popup = pygame.Surface((520, 120), pygame.SRCALPHA)
+            popup.fill((20, 160, 80, 220))
+            SCREEN.blit(popup, popup.get_rect(center=(640, 360)))
+
+            popup_text = big_font.render("Correct!", True, (255, 255, 255))
+            SCREEN.blit(popup_text, popup_text.get_rect(center=(640, 360)))
         pygame.draw.rect(SCREEN,(30,30,50),(500,150,280,70),border_radius=20)
 
         count_surface = big_font.render(f"Guesses : {count}",True,(255,255,255))
