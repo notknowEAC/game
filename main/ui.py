@@ -100,11 +100,6 @@ count = 0
 
 hint_count = 0
 max_hints = 3
-correct_popup_until = 0
-
-#random country
-random_country = df.sample(1).iloc[0]
-
 
 def draw_game_ui(
     screen,
@@ -311,7 +306,7 @@ def _draw_hint_text(screen,hint_text):
 def play():
 
     global input_text, hint_text, display_angle, current_bearing
-    global guess_history, hint_count, message, count, random_country, correct_popup_until
+    global guess_history, hint_count, message, count, random_country
 
     input_text = ""
     guess_history = []
@@ -321,9 +316,11 @@ def play():
     display_angle = 0
     count = 0
     hint_count = 0
-    correct_popup_until = 0
+    game_won = False
 
+    #random country
     random_country = df.sample(1).iloc[0]
+    print(random_country["country"])
 
     hint_button = button.Button(
     image=None,
@@ -340,6 +337,22 @@ def play():
         base_color=(255,255,255),
         hovering_color=(255,0,0)
 )
+    win_again_button = button.Button(
+        image=None,
+        pos=(560,420),
+        text_input="Play Again",
+        font=get_font(32),
+        base_color=(255,255,255),
+        hovering_color=(255,80,80)
+)
+    win_exit_button = button.Button(
+        image=None,
+        pos=(720,420),
+        text_input="Quit",
+        font=get_font(32),
+        base_color=(255,255,255),
+        hovering_color=(255,0,0)
+)
 
     running = True
     while running:
@@ -350,6 +363,24 @@ def play():
                 pygame.quit()
                 sys.exit()
 
+            if game_won:
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    if win_again_button.checkForInput(mouse_pos):
+                        input_text = ""
+                        guess_history = []
+                        hint_text = ""
+                        message = "Guess country"
+                        current_bearing = None
+                        display_angle = 0
+                        count = 0
+                        hint_count = 0
+                        random_country = df.sample(1).iloc[0]
+                        print(random_country["country"])
+                        game_won = False
+                    elif win_exit_button.checkForInput(mouse_pos):
+                        return
+                continue
+
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RETURN:
                     count += 1
@@ -359,7 +390,7 @@ def play():
                     if guess is not None:
                         if guess["country"].lower() == random_country["country"].lower():
                             message = f"Correct! {random_country['country']}"
-                            correct_popup_until = pygame.time.get_ticks() + 1500
+                            game_won = True
 
                         else:
                             lat1,lon1 = guess["lat"],guess["lon"]
@@ -427,13 +458,18 @@ def play():
             mouse_pos,
             message
         )
-        if pygame.time.get_ticks() < correct_popup_until:
-            popup = pygame.Surface((520, 120), pygame.SRCALPHA)
-            popup.fill((20, 160, 80, 220))
-            SCREEN.blit(popup, popup.get_rect(center=(640, 360)))
+        if game_won:
+            popup_rect = pygame.Rect(360, 260, 560, 220)
+            pygame.draw.rect(SCREEN, (40,40,60), popup_rect, border_radius=20)
+            pygame.draw.rect(SCREEN, (255,255,255), popup_rect, 2, border_radius=20)
 
             popup_text = big_font.render("Correct!", True, (255, 255, 255))
-            SCREEN.blit(popup_text, popup_text.get_rect(center=(640, 360)))
+            SCREEN.blit(popup_text, popup_text.get_rect(center=(640, 310)))
+
+            win_again_button.changeColor(mouse_pos)
+            win_exit_button.changeColor(mouse_pos)
+            win_again_button.update(SCREEN)
+            win_exit_button.update(SCREEN)
         pygame.draw.rect(SCREEN,(30,30,50),(500,150,280,70),border_radius=20)
 
         count_surface = big_font.render(f"Guesses : {count}",True,(255,255,255))
